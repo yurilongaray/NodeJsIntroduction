@@ -1,8 +1,18 @@
 const http = require('http');
 const dt   = require('./myfirstmodule');
 const url  = require('url');
+const port = 3000;
 
-/* Criando um servidor http
+const server = http.createServer(function(req, res) {
+	console.log(req.url);
+	res.writeHead(200, {'Content-Type': 'text/html'});
+	res.end('Hey Guys');
+});
+
+server.listen(port, '127.0.0.1');
+console.log('Listening on port ' + port);
+
+/* Criando um servidor http de forma diferente
 http.createServer(function(req,res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write(req.url); //Ex.: http://localhost:8080/teste retorna /teste
